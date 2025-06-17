@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Home - Online Crime File Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Visitors_Home.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="active"><a href="/visitor_home">Home</a></li>
+                <li><a href="/complaints">Complaints</a></li>
+                <li><a href="/crime_report">Crime Report</a></li>
+                <li><a href="/missing_person">Missing Person</a></li>
+                <li><a href="wanted_list"> Wanted List</li>
+                <li><a href="/edit_complaint">Edit Complaint</a></li>
+                <li class="logout"><a href="/logout">Logout</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome, {{ email }}</h1>
+        <p>You are now logged in as a user.</p>
+    </main>
+</body>
+</html>

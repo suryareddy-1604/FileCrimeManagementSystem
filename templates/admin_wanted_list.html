@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanted List - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_wanted_list.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/admin_home">Home</a></li>
+                <li><a href="/admin_complaints">View Complaints</a></li>
+                <li><a href="/admin_witnesses">View Witness</a></li>
+                <li><a href="/admin_missing_persons">View Missing</a></li>
+                <li><a href="/admin_add_wanted">Add Wanted Criminal</a></li>
+                <li class="active"><a href="/admin_wanted_list">View Wanted List</a></li>
+                <li class="logout"><a href="/admin_logout">Logout</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Most Wanted Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>sex</th>
+                    <th>Age</th>
+                    <th>Height</th>
+                    <th>Act</th>
+                    <th>Brief of Case</th>
+                    <th>Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for criminal in criminals %}
+                <tr>
+                    <td>{{ criminal.id }}</td>
+                    <td>{{ criminal.name }}</td>
+                    <td>{{ criminal.sex }}</td>
+                    <td>{{ criminal.age }}</td>
+                    <td>{{ criminal.height }}</td>
+                    <td>{{ criminal.act }}</td>
+                    <td>{{ criminal.brief_of_case }}</td>
+                    <td><img src="{{ url_for('static', filename='uploads/' + criminal.picture) }}" alt="Picture of {{ criminal.name }}" width="100"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

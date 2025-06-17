@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Witness Reports - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_witnesses.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/admin_home">Home</a></li>
+                <li><a href="/admin_complaints">View Complaints</a></li>
+                <li class="active"><a href="/admin_witnesses">View Witness</a></li>
+                <li><a href="/admin_missing_persons">View Missing</a></li>
+                <li><a href="/admin_add_wanted">Add Wanted Criminal</a></li>
+                <li><a href="/admin_wanted_list">View Wanted List</a></li>
+                <li class="logout"><a href="/admin_logout">Logout</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Witness Reports</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Suspect Name</th>
+                    <th>Informer Name</th>
+                    <th>Informer Address</th>
+                    <th>Description</th>
+                    <th>Date of Report</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td>{{ report.id }}</td>
+                    <td>{{ report.suspect_name }}</td>
+                    <td>{{ report.informer_name }}</td>
+                    <td>{{ report.informer_address }}</td>
+                    <td>{{ report.description }}</td>
+                    <td>{{ report.date_of_report }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

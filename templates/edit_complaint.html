@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Complaint - Online Crime File Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Edit_complaint.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/visitor_home">Home</a></li>
+                <li><a href="/complaints">Complaints</a></li>
+                <li><a href="/crime_report">Crime Report</a></li>
+                <li><a href="/missing_person">Missing Person</a></li>
+                <li><a href="wanted_list"> Wanted List</a></li>
+                <li class="active"><a href="/edit_complaint">Edit Complaint</a></li>
+                <li class="logout"><a href="/logout">Logout</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <h1>Edit Complaint</h1>
+        <form action="/edit_complaint" method="post">
+            <label for="user_name">User Name:</label>
+            <input type="text" id="user_name" name="user_name" required><br>
+            <label for="suspect_details">Details Suspect:</label>
+            <input type="text" id="suspect_details" name="suspect_details" required><br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
+            <label for="date_of_complaint">Date of Complaint:</label>
+            <input type="date" id="date_of_complaint" name="date_of_complaint" required><br>
+            <label for="type_of_complaint">Type of Complaint:</label>
+            <select id="type_of_complaint" name="type_of_complaint" required>
+                <option value="Civil">Civil</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>

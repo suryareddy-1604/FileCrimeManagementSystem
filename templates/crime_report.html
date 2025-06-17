@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Report - Online Crime File Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='crime_report.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/visitor_home">Home</a></li>
+                <li><a href="/complaints">Complaints</a></li>
+                <li class="active"><a href="/crime_report">Crime Report</a></li>
+                <li><a href="/missing_person">Missing Person</a></li>
+                <li><a href="wanted_list"> Wanted List</a></li>
+                <li><a href="/edit_complaint">Edit Complaint</a></li>
+                <li class="logout"><a href="/logout">Logout</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <h1>Crime Report</h1>
+        <h2>Witness Report</h2>
+        <form action="/crime_report" method="post">
+            <label for="suspect_name">Suspect Name:</label>
+            <input type="text" id="suspect_name" name="suspect_name" required><br>
+            <label for="informer_name">Informer Name:</label>
+            <input type="text" id="informer_name" name="informer_name" required><br>
+            <label for="informer_address">Informer Address:</label>
+            <textarea id="informer_address" name="informer_address" required></textarea><br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
+            <label for="date_of_report">Date of Report:</label>
+            <input type="date" id="date_of_report" name="date_of_report" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_complaints.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/admin_home">Home</a></li>
+                <li class="active"><a href="/admin_complaints">View Complaints</a></li>
+                <li><a href="/admin_witnesses">View Witness</a></li>
+                <li><a href="/admin_missing_persons">View Missing</a></li>
+                <li><a href="/admin_add_wanted">Add Wanted Criminal</a></li>
+                <li><a href="/admin_wanted_list">View Wanted List</a></li>
+                <li class="logout"><a href="/admin_logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1> Complaints</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>Suspect Details</th>
+                    <th>Description</th>
+                    <th>Date of Complaint</th>
+                    <th>Type of Complaint</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for complaint in complaints %}
+                <tr>
+                    <td>{{ complaint.id }}</td>
+                    <td>{{ complaint.user_name }}</td>
+                    <td>{{ complaint.suspect_details }}</td>
+                    <td>{{ complaint.description }}</td>
+                    <td>{{ complaint.date_of_complaint }}</td>
+                    <td>{{ complaint.type_of_complaint }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

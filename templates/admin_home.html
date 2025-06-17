@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home - Online Crime File Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_home.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="active"><a href="/admin_home">Home</a></li>
+                <li><a href="/admin_complaints">View Complaints</a></li>
+                <li><a href="/admin_witnesses">View Witness</a></li>
+                <li><a href="/admin_missing_persons">View Missing</a></li>
+                <li><a href="/admin_add_wanted">Add Wanted Criminal</a></li>
+                <li><a href="/admin_wanted_list">View Wanted List</a></li>
+                <li class="logout"><a href="/admin_logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome to  Home</h1>
+        <p>Use the navigation bar to manage the crime reports and wanted list.</p>
+    </main>
+</body>
+</html>

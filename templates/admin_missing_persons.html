@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Persons - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_missing_persons.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/admin_home">Home</a></li>
+                <li><a href="/admin_complaints">View Complaints</a></li>
+                <li><a href="/admin_witnesses">View Witness</a></li>
+                <li class="active"><a href="/admin_missing_persons">View Missing</a></li>
+                <li><a href="/admin_add_wanted">Add Wanted Criminal</a></li>
+                <li><a href="/admin_wanted_list">View Wanted List</a></li>
+                <li class="logout"><a href="/admin_logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+    <main>
+        <h1>Missing Persons</h1>
+        <button onclick="window.location.href='/admin_add_fir'">Add FIR</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Missing Place</th>
+                    <th>Date of Missing</th>
+                    <th>Sex</th>
+                    <th>Age</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>Brief of Case</th>
+                    <th>Address of Missing</th>
+                    <th>Date of Report</th>
+                    <th>Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person in persons %}
+                <tr>
+                    <td>{{ person.id }}</td>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.missing_place }}</td>
+                    <td>{{ person.date_of_missing }}</td>
+                    <td>{{ person.sex }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>{{ person.height }}</td>
+                    <td>{{ person.weight }}</td>
+                    <td>{{ person.brief_of_case }}</td>
+                    <td>{{ person.address_of_missing }}</td>
+                    <td>{{ person.date_of_report }}</td>
+                    <td><img src="{{ url_for('static', filename='uploads/' + person.picture) }}" alt="Picture of {{ person.name }}" width="100"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+    </main>
+</body>
+</html>
